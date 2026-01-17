@@ -2,6 +2,7 @@
 Gemini自动化登录模块（使用 undetected-chromedriver）
 更强的反检测能力，支持无头模式
 """
+import os
 import random
 import string
 import time
@@ -75,10 +76,15 @@ class GeminiAutomationUC:
             options.add_argument(f"--user-agent={self.user_agent}")
 
         # 创建驱动（undetected-chromedriver 会自动处理反检测）
+        driver_executable_path = os.environ.get("CHROMEDRIVER")
+        browser_executable_path = os.environ.get("CHROME_BIN")
+
         self.driver = uc.Chrome(
             options=options,
             version_main=None,  # 自动检测 Chrome 版本
             use_subprocess=True,
+            driver_executable_path=driver_executable_path,
+            browser_executable_path=browser_executable_path,
         )
 
         # 设置超时

@@ -1,6 +1,7 @@
 """
 Gemini自动化登录模块（用于新账号注册）
 """
+import os
 import random
 import string
 import time
@@ -52,6 +53,12 @@ class GeminiAutomation:
     def _create_page(self) -> ChromiumPage:
         """创建浏览器页面"""
         options = ChromiumOptions()
+        
+        # 从环境变量设置浏览器路径
+        chrome_bin = os.environ.get("CHROME_BIN")
+        if chrome_bin:
+            options.set_paths(browser_path=chrome_bin)
+
         options.set_argument("--no-sandbox")
         options.set_argument("--disable-setuid-sandbox")
         options.set_argument("--disable-blink-features=AutomationControlled")
