@@ -13,7 +13,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     # Install dependencies for headless Chrome/Chromium
     libglib2.0-0 \
     libnss3 \
-    libgconf-2-4 \
     libfontconfig1 \
     fonts-liberation \
     libasound2 \
