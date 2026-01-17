@@ -1,6 +1,8 @@
 services:
   gemini-api:
-    build: .
+    # build: .
+    image: ghcr.io/repsu/gemini-business2api:ci-main
+    pull_policy: always
     ports:
       - "7860:7860"
     volumes:
