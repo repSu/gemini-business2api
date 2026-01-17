@@ -78,6 +78,11 @@ class GeminiAutomationUC:
         # 创建驱动（undetected-chromedriver 会自动处理反检测）
         driver_executable_path = os.environ.get("CHROMEDRIVER")
         browser_executable_path = os.environ.get("CHROME_BIN")
+        
+        if driver_executable_path:
+            self._log("info", f"using chromedriver from env: {driver_executable_path}")
+        if browser_executable_path:
+            self._log("info", f"using chrome bin from env: {browser_executable_path}")
 
         self.driver = uc.Chrome(
             options=options,

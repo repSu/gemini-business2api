@@ -57,7 +57,10 @@ class GeminiAutomation:
         # 从环境变量设置浏览器路径
         chrome_bin = os.environ.get("CHROME_BIN")
         if chrome_bin:
+            self._log("info", f"using chrome bin from env: {chrome_bin}")
             options.set_paths(browser_path=chrome_bin)
+        else:
+            self._log("info", "using default chrome bin")
 
         options.set_argument("--no-sandbox")
         options.set_argument("--disable-setuid-sandbox")

@@ -10,6 +10,16 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     gcc \
     chromium \
     chromium-driver \
+    # Install dependencies for headless Chrome/Chromium
+    libglib2.0-0 \
+    libnss3 \
+    libgconf-2-4 \
+    libfontconfig1 \
+    fonts-liberation \
+    libasound2 \
+    libgbm1 \
+    libgtk-3-0 \
+    xdg-utils \
     && pip install --no-cache-dir -r requirements.txt \
     && apt-get purge -y gcc \
     && apt-get autoremove -y \
