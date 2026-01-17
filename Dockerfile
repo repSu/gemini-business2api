@@ -8,10 +8,16 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
 COPY requirements.txt .
 RUN apt-get update && apt-get install -y --no-install-recommends \
     gcc \
+    chromium \
+    chromium-driver \
     && pip install --no-cache-dir -r requirements.txt \
     && apt-get purge -y gcc \
     && apt-get autoremove -y \
     && rm -rf /var/lib/apt/lists/*
+
+# Set environment variables for Chromium
+ENV CHROME_BIN=/usr/bin/chromium \
+    CHROMEDRIVER=/usr/bin/chromedriver
 
 # Copy backend code
 COPY main.py .
