@@ -2,10 +2,10 @@ name: Docker Image CI
 
 on:
   push:
-    branches: [ "ci-main", "master" ]
-    tags: [ 'v*.*.*' ]
+    branches: ["ci-main", "master"]
+    tags: ["v*.*.*"]
   pull_request:
-    branches: [ "main", "master" ]
+    branches: ["ci-main", "master"]
 
 env:
   # Use docker.io for Docker Hub if empty
@@ -15,7 +15,6 @@ env:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -32,14 +31,14 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
-          
+          node-version: "20"
+
       - name: Install and Build Frontend
         working-directory: ./frontend
         run: |
           npm install
           npm run build
-      
+
       # Verify static directory generation
       - name: Verify static assets
         run: |
